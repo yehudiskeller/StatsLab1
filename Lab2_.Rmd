@@ -24,7 +24,30 @@ Confidence: 20%
 
 2. Write a custom R function for any one of the following descriptive statistics: median, mode, standard deviation, variance. Demonstrate that it produces the same value as the base R function given some set of numbers.
 ```{r}
+a <- c(1,4,6,2,2,6,7,8,2,4,6,8)
+sorted_a <- sort(a)
+length(a)/2
+m1 <- length(a)/2
+m2 <- (length(a)/2)+1
+sorted_a[m1]
+sorted_a[m2]
 
+(sorted_a[m1]+sorted_a[m2])/2
+
+
+a <- c(1,4,6,2,2,6,7,8,2,4,6,8)
+sorted_a <- sort(a)
+length(a)/2
+m1 <- length(a)/2
+m2 <- (length(a)/2)+1
+sorted_a[m1]
+sorted_a[m2]
+
+(sorted_a[m1]+sorted_a[m2])/2
+
+my_median <- function(){
+
+}
 ```
 
 3. Imagine the same instructor taught a morning, afternoon, and evening section of the same course. And, the average scores for each section on a midterm were 85% for the morning, 90% for the afternoon, and 93% for the evening sections. Create a data.frame representing these means for each section. Then, use ggplot2 to plot the means as bar graph. (hint you will need one vector for the class sections, and one vector for the means. Then you can combine them into a data.frame before plotting them)
