@@ -1,22 +1,26 @@
 ---
+title: "Lab2"rate that the mean minimizes the sum o---------plish the following steps:
 title: "Lab2"
 author: "Yehudis"
-date: "9/9/2020"
-output: html_document
----
 
 1. Use R to demonstrate that the mean minimizes the sum of the squared deviations from the mean. Accomplish the following steps:
-
-1a. Produce a sample of at least 10 or more different numbers
-
-1b. Produce a simulation following the example from the concepts section
-
-1c. Use your simulation to test a range of numbers smaller and larger than the mean to show that the mean minimizes the sum of the squared deviations from the mean.
-
-1d. Plot your results.
 ```{r}
 
+scores <- c(1,5,4,3,4,3,4,5,6,7,8,7,6,5,4,5,4,3,2,3,4)
+
+#numbers_to_test <- c(1,2,3,4,mean(scores),5,6,7,8)
+numbers_to_test <- c(seq(1,mean(scores),.1), mean(scores), seq(mean(scores),8,.1))
+
+sum_sq_deviations <-c() # create an empty vector to store sums
+for(i in 1:length(numbers_to_test)) {
+  sum_sq_deviations[i] <- sum((scores-numbers_to_test[i])^2)
+}
+
+sum_sq_deviations
+plot(sum_sq_deviations)
+
 ```
+Confidence: 20%
 
 2. Write a custom R function for any one of the following descriptive statistics: median, mode, standard deviation, variance. Demonstrate that it produces the same value as the base R function given some set of numbers.
 ```{r}
