@@ -63,17 +63,40 @@ random_strings
 
 ```{r}
 
+step <- c(0)
+for(i in 1:10000){
+  coin_flip <- sample(c(1,-1),1)
+  step[i+1] <- step[i]+coin_flip
+}
+
+plot(step[1:1000])
 ```
 
 4. What was the most positive and most negative step reached out of 10,000? (1 point)
 
 ```{r}
-
+plot(step)
+max(step)
+min(step)
 ```
 
 5. What was the longest run of steps where all steps were positive numbers. For example, in the sequence: 1,2,3,2,1,0,-1,-2,-1,-2,-1,0,1,2,3; the answer is 5 because the first five values were all positive, and this was the longest sequence of positive values. (1 point).
 
 ```{r}
+logical_step <- sign(step)
 
+sequence <-c()
+counter <- 0
+for(i in 1:length(logical_step)){
+  if(logical_step[i] == 0){
+    sequence <- c(sequence,counter)
+    counter <- 0
+  } else {
+    counter <- counter+logical_step[i]
+  }
+}
+
+max(sequence)
+min(sequence)
 ```
 
