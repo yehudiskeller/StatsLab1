@@ -1,0 +1,98 @@
+---
+title: "Lab6"
+author: "Yehudis"
+date: "10/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Write a function that conducts a randomization test for the mean difference between two groups, and show that it works. Specifically, using your function, conduct a randomization test on the same data we used in the above example from lab. Report the results and briefly discuss what the results of the randomization tell you. (6 points). Extra: if the observed mean difference in the experiment was found to be .5, what would you have concluded from the randomization test?
+
+Inputs:
+  the inputs should include a vector for group 1, and vector for group 2, and the number of permutations/re-samplings of the data to create.
+  
+Outputs:
+  output each group mean, and the difference between group means
+output a histogram of the sampling distribution of the possible mean differences produced by the randomization process
+output the probability or odds of obtaining the observed mean difference or larger.
+
+Optional:
+  include the ability to calculate the probability of obtaining any mean difference or larger
+deal with negative difference scores appropriately
+add one or two-tailed test options
+
+```{r}
+group_A <- c(3,4,5,6,7)
+group_B <- c(4,3,6,5,7)
+
+randomization_test <- function(A, B, resamples = 100){
+  
+  #calculate actual means
+  group_A_mean <- mean(A)
+  group_B_mean <- mean(B)
+  mean_difference <- group_A_mean - group_B_mean
+  
+  #randomization
+  all_means <- c(A,B)
+  
+  test_output <- list(A_mean = group_A_mean,
+                      B_mean = group_B_mean,
+                      difference = mean_difference)
+  
+  return(test_output)
+}
+
+randomization_test(A=group_1, B=group_0, resamples = 100)
+
+
+possible_differences <- c()
+for(i in 1:resamples){
+  resample <- sample(all_means)
+  new_A_mean <- mean(resample[1:length(A)])
+  new_B_mean <- mean(resample[length(A)+1:length(all_means)])
+  mean_differences[i] <- new_A_mean-new_B_mean
+}
+
+plot <- ggplot2::qplot(possible_differences)+
+  geom_histogram(color="orange")+
+  geom_vline(xintercept=mean_differences(group_A) - mean(group_B), color ="red")+
+  theme_classic() 
+
+p_value <- length(possible_differences[possible_differences >= mean_differences])/resamples
+
+test_output <- list( A_mean = group_A_mean,
+                     B_mean = group_B_mean,
+                     difference = mean_differences,
+                     randomization = possible_differences,
+                     plot = plot,
+                     p_value = p_value)
+```
+```{r}
+#load the data
+the_data <- read.csv("open_data/SchroederEpley2015data.csv", header = TRUE)
+
+library(dplyr)
+
+group_0 <- the_data %>%
+  filter(CONDITION == 0) %>%
+  select(Intellect_Rating)
+
+group_0 <- group_0$Intellect_Rating
+
+group_1 <- the_data %>%
+  filter(CONDITION == 1) %>%
+  select(Intellect_Rating)
+
+group_1 <- group_1$Intellect_Rating
+
+randomization_test(A=group_1,
+                    B=group_0,
+                   resamples = 1000)
+
+```
+
+
+
