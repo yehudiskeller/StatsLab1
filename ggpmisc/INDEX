@@ -1,0 +1,45 @@
+Moved                   Moved to package 'gginnards'
+annotate                Annotations supporting NPC
+geom_grob               Inset graphical objects
+geom_label_npc          Text with Normalised Parent Coordinates
+geom_plot               Inset plots
+geom_quadrant_lines     Reference lines: horizontal plus vertical, and
+                        quadrants
+geom_table              Inset tables
+geom_x_margin_arrow     Reference arrows on the margins
+geom_x_margin_grob      Add Grobs on the margins
+geom_x_margin_point     Reference points on the margins
+ggplot                  Create a new ggplot plot from time series data
+ggpmisc-package         ggpmisc: Miscellaneous Extensions to 'ggplot2'
+outcome2factor          Convert numeric ternary outcomes into a factor
+quadrant_example.df     Example gene expression data
+scale_colour_outcome    Colour and fill scales for ternary outcomes
+scale_continuous_npc    Position scales for continuous data (npcx &
+                        npcy)
+scale_shape_outcome     Shape scale for ternary outcomes
+scale_x_logFC           Position scales for log fold change data
+scale_y_Pvalue          Covenience scale for P-values
+stat_apply_group        Apply a function to x or y values
+stat_dens1d_filter      Filter observations by local 1D density
+stat_dens1d_labels      Replace labels in data based on 1D density
+stat_dens2d_filter      Filter observations by local 2D density
+stat_dens2d_labels      Replace labels in data based on 2D density
+stat_fit_augment        Augment data with fitted values and statistics
+stat_fit_deviations     Residuals from model fit as segments
+stat_fit_glance         One row summary data frame for a fitted model
+stat_fit_residuals      Residuals from a model fit
+stat_fit_tb             Model-fit summary or ANOVA
+stat_fit_tidy           One row data frame with fitted parameter
+                        estimates
+stat_fmt_tb             Select and slice a tibble nested in 'data'
+stat_peaks              Local maxima (peaks) or minima (valleys)
+stat_poly_eq            Equation, p-value, R^2, AIC or BIC of fitted
+                        polynomial
+stat_quadrant_counts    Number of observations in quadrants
+symmetric_limits        Expand a range to make it symmetric
+try_data_frame          Convert an R object into a tibble
+ttheme_gtdefault        Table themes
+ttheme_set              Set default table theme
+volcano_example.df      Example gene expression data
+xy_outcomes2factor      Convert two numeric ternary outcomes into a
+                        factor

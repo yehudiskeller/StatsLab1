@@ -1,0 +1,42 @@
+---
+title: "Lab 12"
+author: "Yehudis"
+date: "12/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Should you do a linear regression on this data? Explain.
+
+Y <- c(10,9,8,7,6,5,4,3,2,1,2,3,4,5,6,7,8,9,10)
+X <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)
+
+- You can, but you shouldn't. Looking at the data, we get a V distribution, showing that X cannot predict Y when the first half creates a negative slope and the second half a positive, because the error would be too big. Therefore the results would not be meaningful. The regression line itself is completely flat to support the answer. In order to understand if data such as our given X and Y should be analyzed via a linear regression, plotting the data is important because it tells us more than the summarized written data can.
+
+```{r}
+some_data <- data.frame (Y_dv = c(10,9,8,7,6,5,4,3,2,1,2,3,4,5,6,7,8,9,10),
+                         X_iv = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19))
+
+lm(Y_dv ~ X_iv, data=some_data)
+
+save_model <-lm(Y_dv ~ X_iv, data=some_data)
+summary(save_model)$r.squared
+
+cor.test(some_data$Y_dv,some_data$X_iv)
+
+summary(save_model)$r.squared
+
+sqrt(summary(save_model)$r.squared)
+
+```
+```{r}
+library(ggplot2)
+
+ggplot(some_data, aes(x=X_iv, y=Y_dv))+
+  geom_point()+
+  geom_smooth(method='lm', se=FALSE)
+```
+
